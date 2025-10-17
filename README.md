@@ -28,3 +28,4 @@ Instagram: [Instagram](https://www.instagram.com/itsallaboutpython)\
 Blog Site: [Site](https://itsallaboutpython.blogspot.com/)\
 GitHub: [GitHub](https://github.com/visheshdvivedi/)
 # Тест CI на ветке development
+# Release версия проекта 1.0
