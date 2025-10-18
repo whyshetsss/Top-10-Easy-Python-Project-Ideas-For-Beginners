@@ -1,3 +1,8 @@
+"""
+Calculator module for CI/CD demo.
+
+This module provides basic arithmetic operations.
+"""
 def add(a, b):
     """Функция сложения для тестов"""
     return a + b
@@ -28,3 +33,4 @@ if __name__ == "__main__":
             print("Exiting...")
             break
         print()
+
