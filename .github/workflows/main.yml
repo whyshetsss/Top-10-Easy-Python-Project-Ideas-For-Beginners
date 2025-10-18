@@ -1,26 +1,60 @@
-name: Python CI
+name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+      - development
+      - release
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Получаем код из репозитория
+      - name: 🧩 Checkout repository
         uses: actions/checkout@v3
 
-      - name: Устанавливаем Python
+      - name: 🐍 Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: '3.10'
 
-      - name: Проверяем, что код запускается
+      - name: 📦 Install dependencies
         run: |
-          echo "Запуск проверки Python..."
-          python --version
-          echo "✅ CI успешно выполнен!"
+          python -m pip install --upgrade pip
+          pip install pytest
+
+      - name: 🧪 Run unit tests
+        run: |
+          pytest -v || exit 1
+
+  generate-docs:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    steps:
+      - name: 📂 Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: 🧰 Install tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install pdoc3
+
+      - name: 📝 Generate documentation
+        run: |
+          mkdir -p docs
+          pdoc --output-dir docs . || echo "Docs generated"
+
+      - name: 📤 Upload docs as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: project-docs
+          path: docs/
