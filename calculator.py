@@ -1,3 +1,6 @@
+def add(a, b):
+    """Функция сложения для тестов"""
+    return a + b
 print("===== Welcome to Calculator App =====\n")
 while 1:
     print("What would you like to do:-")
@@ -21,3 +24,4 @@ while 1:
         print("Exiting...")
         break
     print()
+
