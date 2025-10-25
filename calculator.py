@@ -16,7 +16,10 @@ def multiply(a, b):
     return a * b
 
 def divide(a, b):
-    return 4
+    if b == 0:
+        raise ZeroDivisionError("Division by zero is not allowed")
+    return a / b
+
 
 
 
