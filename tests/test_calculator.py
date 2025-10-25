@@ -24,5 +24,6 @@ def test_multiply():
 def test_multiply_negative():
     assert multiply(-2, 4) == -8
 
-def test_divide():
-    assert divide(8, 2) == 4
+def test_divide_by_zero():
+    with pytest.raises(ZeroDivisionError):
+        divide(5, 0)
