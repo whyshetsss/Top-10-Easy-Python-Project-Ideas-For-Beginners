@@ -1,100 +1,119 @@
 """
-Calculator module for TDD demo (RED phase).
-Фаза RED — все функции либо содержат ошибки, либо не реализованы.
-Цель: чтобы тесты упали и показать процесс RED → GREEN.
+Calculator module for TDD demo (GREEN phase).
+Фаза GREEN — все функции реализованы корректно и проходят тесты.
+Цель: все тесты должны завершаться успешно.
 """
 
-# 🔴 Итерация 1: add() — неправильное сложение
+import math
+
+
+
 def add(a, b):
-    """Функция сложения (ошибка намеренно)"""
-    return a - b   # ❌ должно быть a + b
-
-
-# 🔴 Итерация 2: subtract() — не реализована
-def subtract(a, b):
-    """Функция вычитания (не реализована)"""
-    pass
-
-
-# 🔴 Итерация 3: multiply() — ошибка логики
-def multiply(a, b):
-    """Функция умножения (ошибка намеренно)"""
+    """Функция сложения"""
     return a + b
 
 
-# 🔴 Итерация 4: divide() — без обработки нуля
-def divide(a, b):
-    """Функция деления (ошибка при b = 0)"""
-    return a / b
+# 🟢 Итерация 2: subtract() — реализовано
+def subtract(a, b):
+    """Функция вычитания"""
+    return a - b
 
 
-# 🔴 Итерация 5: power() — возвращает строку
-def power(a, b):
-    """Возведение в степень (ошибка — возвращает строку)"""
-    return str(a ** b)
-
-
-# 🔴 Итерация 6: absolute() — неверное поведение
-def absolute(a):
-    """Модуль числа (ошибка — не берёт abs)"""
-    return a
-
-
-# 🔴 Итерация 7: percentage() — неверная формула
-def percentage(a, b):
-    """Процент от числа (ошибка намеренно)"""
+# 🟢 Итерация 3: multiply() — исправлено
+def multiply(a, b):
+    """Функция умножения"""
     return a * b
 
 
-# 🔴 Итерация 8: round_value() — не округляет
-def round_value(a, digits=2):
-    """Округление числа (ошибка намеренно)"""
-    return a
-
-
-# 🔴 Итерация 9: square_root() — не проверяет отрицательные
-def square_root(a):
-    """Квадратный корень числа (ошибка для отрицательных)"""
-    import math
-    return math.sqrt(a)  # ❌ при отрицательном — ошибка
-
-
-# 🔴 Итерация 10: mod() — неверная формула
-def mod(a, b):
-    """Остаток от деления (ошибка)"""
-    return a / b   # ❌ вместо %
-
-
-# 🔴 Итерация 11: max_value() — возвращает min
-def max_value(a, b):
-    """Максимум из двух чисел (ошибка)"""
-    return min(a, b)
-
-
-# 🔴 Итерация 12: min_value() — возвращает max
-def min_value(a, b):
-    """Минимум из двух чисел (ошибка)"""
-    return max(a, b)
-
-
-# 🔴 Итерация 13: safe_divide() — падает при делении на ноль
-def safe_divide(a, b):
-    """Безопасное деление (ошибка — без проверки на 0)"""
+# 🟢 Итерация 4: divide() — с обработкой деления на ноль
+def divide(a, b):
+    """Функция деления с проверкой деления на 0"""
+    if b == 0:
+        raise ZeroDivisionError("Division by zero is not allowed.")
     return a / b
 
 
-# 🔴 Итерация 14: average() — неверная логика
+# 🟢 Итерация 5: power() — исправлено
+def power(a, b):
+    """Возведение в степень"""
+    return a ** b
+
+
+# 🟢 Итерация 6: absolute() — исправлено
+def absolute(a):
+    """Модуль числа"""
+    return abs(a)
+
+
+# 🟢 Итерация 7: percentage() — исправлено
+def percentage(a, b):
+    """Вычисление процента a от b"""
+    if b == 0:
+        return 0
+    return (a / b) * 100
+
+
+# 🟢 Итерация 8: round_value() — исправлено
+def round_value(a, digits=2):
+    """Округление числа"""
+    return round(a, digits)
+
+
+# 🟢 Итерация 9: square_root() — исправлено
+def square_root(a):
+    """Квадратный корень (возвращает None для отрицательных чисел)"""
+    if a < 0:
+        return None
+    return math.sqrt(a)
+
+
+# 🟢 Итерация 10: mod() — исправлено
+def mod(a, b):
+    """Остаток от деления"""
+    return a % b
+
+
+# 🟢 Итерация 11: max_value() — исправлено
+def max_value(a, b):
+    """Максимум из двух чисел"""
+    return max(a, b)
+
+
+# 🟢 Итерация 12: min_value() — исправлено
+def min_value(a, b):
+    """Минимум из двух чисел"""
+    return min(a, b)
+
+
+# 🟢 Итерация 13: safe_divide() — исправлено
+def safe_divide(a, b):
+    """Безопасное деление (возвращает None при делении на 0)"""
+    if b == 0:
+        return None
+    return a / b
+
+
+# 🟢 Итерация 14: average() — исправлено
 def average(numbers):
-    """Среднее значение (ошибка — не делит на длину)"""
-    return sum(numbers)
+    """Среднее значение списка чисел"""
+    if not numbers:
+        return 0
+    return sum(numbers) / len(numbers)
 
 
-# 🔴 Итерация 15: factorial() — возвращает 0
+# 🟢 Итерация 15: factorial() — исправлено
 def factorial(n):
-    """Факториал числа (ошибка — всегда возвращает 0)"""
-    return 0
+    """Факториал числа"""
+    if n < 0:
+        return None
+    if n == 0 or n == 1:
+        return 1
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+    return result
 
 
 if __name__ == "__main__":
-    print("===== Calculator RED Phase =====")
-    print("This version intentionally contains 15 errors.")
+    print("===== Calculator GREEN Phase =====")
+    print("All tests should now pass successfully ✅")
