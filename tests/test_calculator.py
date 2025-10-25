@@ -11,3 +11,6 @@ def test_add():
 
 def test_add_negative():
     assert add(-1, 1) == 0
+
+def test_subtract():
+    assert subtract(10, 4) == 6
