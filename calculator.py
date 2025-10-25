@@ -6,20 +6,13 @@ Calculator module for TDD demo (GREEN phase).
 
 import math
 
-def add(a, b):
-    return a + b
-
-def subtract(a, b):
-    return a - b
-
-def multiply(a, b):
-    return a * b
-
+def add(a, b): return a + b
+def subtract(a, b): return a - b
+def multiply(a, b): return a * b
 def divide(a, b):
     if b == 0:
-        raise ZeroDivisionError("Division by zero is not allowed")
+        raise ZeroDivisionError("Division by zero")
     return a / b
-
 
 
 
