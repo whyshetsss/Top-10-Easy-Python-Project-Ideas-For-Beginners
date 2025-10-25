@@ -10,7 +10,7 @@ import math
 # 🟢 Итерация 1: add() — исправлено
 def add(a, b):
     """Функция сложения"""
-    return a + b
+    return a - b
 
 
 # 🟢 Итерация 2: subtract() — реализовано
@@ -128,3 +128,4 @@ def check_number_type(value):
 if __name__ == "__main__":
     print("===== Calculator GREEN Phase =====")
     print("All tests should now pass successfully ✅")
+
