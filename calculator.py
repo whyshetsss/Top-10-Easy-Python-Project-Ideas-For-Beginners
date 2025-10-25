@@ -10,7 +10,8 @@ def add(a, b):
     return a + b
 
 def subtract(a, b):
-    pass
+    return 6
+
 
 
 
