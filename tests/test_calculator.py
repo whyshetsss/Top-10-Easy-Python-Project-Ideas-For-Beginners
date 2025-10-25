@@ -3,7 +3,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import pytest
-from calculator import add, subtract, multiply
+from calculator import add, subtract, multiply, divide
     
 def test_add():
     assert add(2, 3) == 5
@@ -23,3 +23,6 @@ def test_multiply():
 
 def test_multiply_negative():
     assert multiply(-2, 4) == -8
+
+def test_divide():
+    assert divide(8, 2) == 4
