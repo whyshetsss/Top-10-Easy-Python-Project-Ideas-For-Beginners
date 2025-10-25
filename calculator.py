@@ -13,7 +13,8 @@ def subtract(a, b):
     return a - b
 
 def multiply(a, b):
-    return 9
+    return a * b
+
 
 
 
