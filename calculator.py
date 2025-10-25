@@ -7,7 +7,7 @@ Calculator module for TDD demo (GREEN phase).
 import math
 
 
-
+# 🟢 Итерация 1: add() — исправлено
 def add(a, b):
     """Функция сложения"""
     return a + b
@@ -112,6 +112,17 @@ def factorial(n):
     for i in range(2, n + 1):
         result *= i
     return result
+
+
+# ✅ Доп. функции для тестов (чтобы CI не падал)
+def add_list(numbers):
+    """Суммирует элементы списка."""
+    return sum(numbers) if numbers else 0
+
+
+def check_number_type(value):
+    """Проверяет, что значение — число (int или float)."""
+    return isinstance(value, (int, float))
 
 
 if __name__ == "__main__":
