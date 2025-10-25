@@ -34,3 +34,8 @@ if __name__ == "__main__":
             break
         print()
 
+def multiply(a, b):
+    """Умножение двух чисел."""
+    return a * b
+
+
