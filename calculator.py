@@ -7,4 +7,5 @@ Calculator module for TDD demo (GREEN phase).
 import math
 
 def add(a, b):
-    pass
+    return 5
+
